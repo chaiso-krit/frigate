@@ -129,7 +129,8 @@ export default function LiveDashboardView({
 
   // camera live views
 
-  const [autoLiveView] = usePersistence("autoLiveView", true);
+  const [autoLiveView] = usePersistence("autoLiveView", false);
+  const [eventsView] = usePersistence("eventsView", false);
 
   const [{ height: containerHeight }] = useResizeObserver(containerRef);
 

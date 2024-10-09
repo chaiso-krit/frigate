@@ -297,6 +297,7 @@ export default function LivePlayer({
           className="size-full"
           camera={cameraConfig.name}
           showFps={false}
+          searchParams={searchParams}
           reloadInterval={stillReloadInterval}
           cameraClasses="relative size-full flex justify-center"
         />

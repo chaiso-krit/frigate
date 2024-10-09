@@ -283,7 +283,7 @@ export default function LiveDashboardView({
         </div>
       )}
 
-      {!fullscreen && events && events.length > 0 && (
+      {!fullscreen && eventsView && events && events.length > 0 && (
         <ScrollArea>
           <TooltipProvider>
             <div className="flex items-center gap-2 px-1">

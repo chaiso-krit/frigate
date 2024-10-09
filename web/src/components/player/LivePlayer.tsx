@@ -77,6 +77,7 @@ export default function LivePlayer({
   const [liveReady, setLiveReady] = useState(false);
 
   const liveReadyRef = useRef(liveReady);
+  const searchParams = new URLSearchParams("bbox=1");;
   const cameraActiveRef = useRef(cameraActive);
 
   useEffect(() => {
@@ -124,7 +125,7 @@ export default function LivePlayer({
       if (autoLive) {
         return 200;
       } else {
-        return 59000;
+        return 300;
       }
     }
 

@@ -52,7 +52,8 @@ export default function UiSettingsView() {
 
   // settings
 
-  const [autoLive, setAutoLive] = usePersistence("autoLiveView", true);
+  const [autoLive, setAutoLive] = usePersistence("autoLiveView", false);
+  const [eventsView, setEventsView] = usePersistence("eventsView", false);
   const [playbackRate, setPlaybackRate] = usePersistence("playbackRate", 1);
   const [weekStartsOn, setWeekStartsOn] = usePersistence("weekStartsOn", 0);
   const [alertVideos, setAlertVideos] = usePersistence("alertVideos", true);
@@ -108,6 +109,23 @@ export default function UiSettingsView() {
                   By default, recent alerts on the Live dashboard play as small
                   looping videos. Disable this option to only show a static
                   image of recent alerts on this device/browser.
+                </p>
+              </div>
+            </div>
+            <div className="space-y-3">
+              <div className="flex flex-row items-center justify-start gap-2">
+                <Switch
+                  id="images-only"
+                  checked={eventsView}
+                  onCheckedChange={setEventsView}
+                />
+                <Label className="cursor-pointer" htmlFor="images-only">
+                  Events View
+                </Label>
+              </div>
+              <div className="my-2 text-sm text-muted-foreground">
+                <p>
+                  Turn off events view in Dashboard View.
                 </p>
               </div>
             </div>

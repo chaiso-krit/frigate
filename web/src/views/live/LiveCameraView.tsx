@@ -69,6 +69,7 @@ import {
   LuEarOff,
   LuHistory,
   LuPictureInPicture,
+  LuRotateCw,
   LuVideo,
   LuVideoOff,
 } from "react-icons/lu";
@@ -85,6 +86,7 @@ import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
 import useSWR from "swr";
 import { cn } from "@/lib/utils";
 import { useSessionPersistence } from "@/hooks/use-session-persistence";
+import { publishData } from "@/utils/mqttUtil";
 
 type LiveCameraViewProps = {
   config?: FrigateConfig;
@@ -384,6 +386,17 @@ export default function LiveCameraView({
               >
                 <LuHistory className="size-5 text-secondary-foreground" />
                 {isDesktop && <div className="text-primary">History</div>}
+              </Button>
+              <Button
+                className={`flex items-center gap-2.5 rounded-lg`}
+                aria-label="Reset Count"
+                size="sm"
+                onClick={() =>
+                  publishData(`frigate/${camera.name}/reset`, "reset")
+                }
+              >
+                <LuRotateCw className="size-5 text-secondary-foreground" />
+                {isDesktop && <div className="text-primary">Reset Count</div>}
               </Button>
             </div>
           ) : (

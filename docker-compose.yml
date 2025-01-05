@@ -39,3 +39,6 @@ services:
     image: eclipse-mosquitto:1.6
     ports:
       - "1883:1883"
+      - "1885:1885"
+    volumes:
+      - ./mosquitto_config:/mosquitto/config

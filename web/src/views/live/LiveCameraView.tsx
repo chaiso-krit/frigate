@@ -391,9 +391,9 @@ export default function LiveCameraView({
                 className={`flex items-center gap-2.5 rounded-lg`}
                 aria-label="Reset Count"
                 size="sm"
-                onClick={() =>
-                  publishData(`frigate/${camera.name}/reset`, "reset")
-                }
+                onClick={() => {
+                  publishData(`/${camera.name}/reset`, "reset");
+                }}
               >
                 <LuRotateCw className="size-5 text-secondary-foreground" />
                 {isDesktop && <div className="text-primary">Reset Count</div>}

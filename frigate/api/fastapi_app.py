@@ -11,7 +11,7 @@ from starlette_context import middleware, plugins
 from starlette_context.plugins import Plugin
 
 from frigate.api import app as main_app
-from frigate.api import auth, event, export, media, notification, preview, review
+from frigate.api import auth, event, export, media, notification, preview, review, reset_count
 from frigate.api.auth import get_jwt_secret, limiter
 from frigate.comms.event_metadata_updater import (
     EventMetadataPublisher,
@@ -106,6 +106,7 @@ def create_fastapi_app(
     app.include_router(export.router)
     app.include_router(event.router)
     app.include_router(media.router)
+    app.include_router(reset_count.router)
     # App Properties
     app.frigate_config = frigate_config
     app.embeddings = embeddings

@@ -11,3 +11,4 @@ class Tags(Enum):
     export = "Export"
     events = "Events"
     auth = "Auth"
+    reset = "Reset"

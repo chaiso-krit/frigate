@@ -1,6 +1,5 @@
 from fastapi import APIRouter, Request
 from fastapi.responses import JSONResponse
-from frigate.comms.dispatcher import Dispatcher
 from frigate.config import FrigateConfig
 from frigate.api.defs.tags import Tags
 
@@ -17,9 +16,9 @@ config = FrigateConfig.load()
 
 
 @router.post("/{camera_name}/reset")
-async def reset_camera(camera_name: str):
+async def reset_camera(camera_name: str, req: Request):
+    payload = await req.body()
     topic = f"{camera_name}/reset"
-    payload = "reset"
     mqtt_config = config.mqtt
     client = mqtt.Client(
         callback_api_version=CallbackAPIVersion.VERSION2,

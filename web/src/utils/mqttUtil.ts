@@ -1,11 +1,11 @@
-import mqtt from "mqtt";
+import axios from 'axios';
 
-export const publishData = (topic: string, data: string) => {
-  const client = mqtt.connect("mqtt://0.0.0.0:1885");
-
-  client.on("connect", () => {
-    client.publish(topic, data);
-  });
-
-  return "Success";
+export const publishData = async ( path: string, data: string) => {
+  try {
+    const response = await axios.post(path, data);
+    return response.data;
+  } catch (error) {
+    console.error('Error publishing data:', error);
+    throw error;
+  }
 };

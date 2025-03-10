@@ -1,0 +1,25 @@
+services:
+  frigate:
+    container_name: frigate
+    restart: unless-stopped
+    image: frigate:latest
+    shm_size: "512mb"
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - ./config:/config
+      - ./storage:/media/frigate
+    ports:
+      - "8971:8971"
+      #- "5000:5000" # Internal unauthenticated access. Expose carefully.
+      - "8554:8554" # RTSP feeds
+      - "8555:8555/tcp" # WebRTC over tcp
+      - "8555:8555/udp" # WebRTC over udp
+  mqtt:
+    container_name: mqtt
+    image: eclipse-mosquitto:1.6
+    ports:
+      - "1883:1883"
+      - "1885:1885"
+    volumes:
+      - ./mosquitto_config:/mosquitto/config
+      - ./mosquitto_certs:/certs

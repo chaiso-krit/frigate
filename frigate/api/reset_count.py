@@ -18,7 +18,7 @@ config = FrigateConfig.load()
 
 @router.get("/{camera_name}/reset")
 async def reset_camera(camera_name: str):
-    payload = {"values": True}  # JSON payload
+    payload = {"values": True}
     topic = f"{camera_name}/status_reset"
     mqtt_config = config.mqtt
     client = mqtt.Client(

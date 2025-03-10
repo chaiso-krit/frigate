@@ -86,7 +86,7 @@ import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
 import useSWR from "swr";
 import { cn } from "@/lib/utils";
 import { useSessionPersistence } from "@/hooks/use-session-persistence";
-import { publishData } from "@/utils/mqttUtil";
+import { resetCount } from "@/utils/mqttUtil";
 
 type LiveCameraViewProps = {
   config?: FrigateConfig;
@@ -392,7 +392,7 @@ export default function LiveCameraView({
                 aria-label="Reset Count"
                 size="sm"
                 onClick={() => {
-                  publishData(`/${camera.name}/reset`, "reset");
+                  resetCount(camera.name);
                 }}
               >
                 <LuRotateCw className="size-5 text-secondary-foreground" />

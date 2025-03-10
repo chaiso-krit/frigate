@@ -1,8 +1,8 @@
 import axios from 'axios';
 
-export const publishData = async ( path: string, data: string) => {
+export const resetCount = async ( camera_name: String) => {
   try {
-    const response = await axios.post(path, data);
+    const response = await axios.get(`/${camera_name}/reset`);
     return response.data;
   } catch (error) {
     console.error('Error publishing data:', error);

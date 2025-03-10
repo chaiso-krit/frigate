@@ -50,6 +50,7 @@ async def reset_camera(camera_name: str):
         content={
             "success": True,
             "message": f"Camera {camera_name} reset",
+            "message": f"Camera {camera_name} reset",
         },
         status_code=200,
     )
